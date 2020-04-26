@@ -1,0 +1,456 @@
+[
+    {
+        "cartId":"o4137150571",
+        "cartType":"CP",
+        "shoppingZipCode":"66251",
+        "accountType":"I",
+        "accountSubType":"I",
+        "corpId":null,
+        "cartPrice":{
+            "totalTax":0.0,
+            "aslFee":0.0,
+            "todaysTotalCharge":0.0,
+            "firstMonthInvoiceTotalCharge":45.0,
+            "subsequentMonthsInvoiceTotalCharge":45.0,
+            "totalMonthlyPriceBeforeDiscount":45.0,
+            "oneTimeInvoiceCreditTotal":0.0,
+            "recurringInvoiceCreditTotal":0.0,
+            "shippingCharge":0.0,
+            "aslFeeApplied":false,
+            "estimatedTax":false,
+            "totalTaxesAndFees":0.0,
+            "subsequentMonthsInvoiceTotalChargeOverflow":0.0,
+            "subsequentMonthsInvoiceTotalChargeForPPOIB":0.0,
+            "totalTaxesOnPPOIB":0.0
+        },
+        "status":{
+            "errors":[
+                
+            ],
+            "information":[
+                {
+                    "field":"ORDER",
+                    "fieldCollectionId":"o4137150571",
+                    "errorCode":"CART_HAS_A_BUY_UP_PLAN",
+                    "errorMessage":"<p>Please note: Any additional data purchased that has not been used yet will be lost when you change your plan.</p>",
+                    "errorInfo":"It is information only. If user had buy up soc purchased before, it will be lost when the plan is changed.",
+                    "errorParameters":null,
+                    "url":null
+                }
+            ]
+        },
+        "version":"20",
+        "profileId":"9728073565",
+        "ban":"513000886",
+        "creditClass":"ZI",
+        "authorizedLineLimit":0,
+        "remainingLineLimit":0,
+        "aslLimit":0.0,
+        "aslRequired":false,
+        "creditCheckApplicationNumber":null,
+        "customerType":"SPRINT_CUSTOMER",
+        "creditSource":"BAN_CREDIT_SOURCE",
+        "packageQuantityLimit":0,
+        "autopayMACsExist":null,
+        "packages":[
+            {
+                "packageId":"ci88646007028",
+                "packageType":"CP",
+                "packageSource":"VML",
+                "packageSourceUrl":null,
+                "oldCarrierInfo":{
+                    "gbLevel":null,
+                    "oldCarrier":null,
+                    "oldCarrierPrice":0.0
+                },
+                "subpackages":[
+                    {
+                        "subPackageId":"ci88646007028",
+                        "subPackageType":"CP",
+                        "device":null,
+                        "plan":{
+                            "name":"Unlimited Plan",
+                            "planCommerceItemID":"ci88646007029",
+                            "planSOCSKU":"LPDSA0542",
+                            "catalogReferenceID":"120200181",
+                            "price":25.0,
+                            "tiIndicator": true,
+                            "effectiveDate": "09/01/2019",
+                            "postPurchaseDiscounts":[
+                                {
+                                    "amount": 0,
+                                    "classification": "PROMOTION",
+                                    "applyMethod": "INVOICE_CREDIT",
+                                    "source": "WEB",
+                                    "webExclusive": null,
+                                    "label": "HULU",
+                                    "recurringInfo": null,
+                                    "promotionId": "112600019",
+                                    "couponCode": null
+                                  },
+                                  {
+                                    "amount": 0,
+                                    "classification": "PROMOTION",
+                                    "applyMethod": "INVOICE_CREDIT",
+                                    "source": "WEB",
+                                    "webExclusive": null,
+                                    "label": "Tech Expert - Free personal content/contact transfer",
+                                    "recurringInfo": null,
+                                    "promotionId": "113700020",
+                                    "couponCode": null
+                                  }
+                                
+                            ],
+                            "planRequiredSocs":[
+                                {
+                                    "requiredSOCSKU":"LPDS542RC",
+                                    "requiredSOCDescription":"Unlimited Service Plan",
+                                    "socStatus":"NEW",
+                                    "socType":"MRC_SOC",
+                                    "price":25.0,
+                                    "basePrice":25.0,
+                                    "onPromotion":false,
+                                    "hasPromotionalOfferButNotEligible":false,
+                                    "requiredSOCMACList":null
+                                },
+                                {
+                                    "requiredSOCSKU":"SUBCHG25",
+                                    "requiredSOCDescription":"Unlimited Service Plan 2",
+                                    "socStatus":"SYSTEM_REMOVED",
+                                    "socType":"UPCHARGE_SOC",
+                                    "price":0.0,
+                                    "basePrice":0.0,
+                                    "onPromotion":false,
+                                    "hasPromotionalOfferButNotEligible":false,
+                                    "requiredSOCMACList":null
+                                },
+                                {
+                                    "requiredSOCSKU":"REQPROLHS",
+                                    "requiredSOCDescription":null,
+                                    "socStatus":"SYSTEM_REMOVED",
+                                    "socType":"PLAN_INCLUDED_SOC",
+                                    "price":0.0,
+                                    "basePrice":0.0,
+                                    "onPromotion":false,
+                                    "hasPromotionalOfferButNotEligible":false,
+                                    "requiredSOCMACList":null
+                                }
+                            ],
+                            "lineCorpDiscountApplied":false
+                        },
+                        "services":[
+                            {
+                                "name":"Unlimited Premium",
+                                "serviceCommerceItemID":"ci88646007030",
+                                "serviceSOCSKU":"PDSBYUP8",
+                                "catalogReferenceID":"125000073",
+                                "serviceStatus":"NEW",
+                                "price":20.0,
+                                "postPurchaseDiscounts":[
+                                    
+                                ],
+                                "mandatory":false,
+                                "mandatoryFromGroup":true,
+                                "showInCart":true,
+                                "chargeType":"MRC_CHARGE"
+                            },
+                            {
+                                "name":"Allow my device to place international calls while in the United States",
+                                "serviceCommerceItemID":"ci88646007031",
+                                "serviceSOCSKU":"INTLCALLS",
+                                "catalogReferenceID":"1000084",
+                                "serviceStatus":"CARRY_FORWARD",
+                                "price":0.0,
+                                "postPurchaseDiscounts":[
+                                    
+                                ],
+                                "mandatory":false,
+                                "mandatoryFromGroup":false,
+                                "showInCart":true,
+                                "chargeType":"MRC_CHARGE"
+                            }
+                        ],
+                        "accessories":[
+                            
+                        ],
+                        "currentSubscriberInfo":{
+                            "subscriberID":"64502149121",
+                            "ptn":"9139984224",
+                            "loanDetails":null
+                        },
+                        "portInIntent":null,
+                        "effective":"IMMEDIATELY",
+                        "byodDevice":null,
+                        "macDiscounts":null,
+                        "upgradeEligibilityStatus":null,
+                        "upgradeEligibilityDate":null,
+                        "portInNeeded":false
+                    },
+                    {
+                        "subPackageId":"ciCPM",
+                        "subPackageType":"CP",
+                        "device":null,
+                        "plan":{
+                            "name":"Unlimited Multi Plan",
+                            "planCommerceItemID":"ci88646007029",
+                            "planSOCSKU":"LPDSA0542",
+                            "catalogReferenceID":"120200181",
+                            "price":25.0,
+                            "tiIndicator": true,
+                            "effectiveDate": "09/01/2019",
+                            "postPurchaseDiscounts":[
+                                {
+                                    "amount": 0,
+                                    "classification": "PROMOTION",
+                                    "applyMethod": "INVOICE_CREDIT",
+                                    "source": "WEB",
+                                    "webExclusive": null,
+                                    "label": "HULU",
+                                    "recurringInfo": null,
+                                    "promotionId": "112600019",
+                                    "couponCode": null
+                                  },
+                                  {
+                                    "amount": 0,
+                                    "classification": "PROMOTION",
+                                    "applyMethod": "INVOICE_CREDIT",
+                                    "source": "WEB",
+                                    "webExclusive": null,
+                                    "label": "Tech Expert - Free personal content/contact transfer",
+                                    "recurringInfo": null,
+                                    "promotionId": "113700020",
+                                    "couponCode": null
+                                  }
+                                
+                            ],
+                            "planRequiredSocs":[
+                                {
+                                    "requiredSOCSKU":"LPDS542RC",
+                                    "requiredSOCDescription":"Unlimited Service Plan",
+                                    "socStatus":"NEW",
+                                    "socType":"MRC_SOC",
+                                    "price":24.0,
+                                    "basePrice":24.0,
+                                    "onPromotion":false,
+                                    "hasPromotionalOfferButNotEligible":false,
+                                    "requiredSOCMACList":null
+                                },
+                                {
+                                    "requiredSOCSKU":"SUBCHG25",
+                                    "requiredSOCDescription":null,
+                                    "socStatus":"SYSTEM_REMOVED",
+                                    "socType":"UPCHARGE_SOC",
+                                    "price":0.0,
+                                    "basePrice":0.0,
+                                    "onPromotion":false,
+                                    "hasPromotionalOfferButNotEligible":false,
+                                    "requiredSOCMACList":null
+                                },
+                                {
+                                    "requiredSOCSKU":"REQPROLHS",
+                                    "requiredSOCDescription":null,
+                                    "socStatus":"SYSTEM_REMOVED",
+                                    "socType":"PLAN_INCLUDED_SOC",
+                                    "price":0.0,
+                                    "basePrice":0.0,
+                                    "onPromotion":false,
+                                    "hasPromotionalOfferButNotEligible":false,
+                                    "requiredSOCMACList":null
+                                }
+                            ],
+                            "lineCorpDiscountApplied":false
+                        },
+                        "services":[
+                            {
+                                "name":"Unlimited Premium",
+                                "serviceCommerceItemID":"ci88646007030",
+                                "serviceSOCSKU":"PDSBYUP8",
+                                "catalogReferenceID":"125000073",
+                                "serviceStatus":"NEW",
+                                "price":20.0,
+                                "postPurchaseDiscounts":[
+                                    
+                                ],
+                                "mandatory":false,
+                                "mandatoryFromGroup":true,
+                                "showInCart":true,
+                                "chargeType":"MRC_CHARGE"
+                            },
+                            {
+                                "name":"Allow my device to place international calls while in the United States",
+                                "serviceCommerceItemID":"ci88646007031",
+                                "serviceSOCSKU":"INTLCALLS",
+                                "catalogReferenceID":"1000084",
+                                "serviceStatus":"CARRY_FORWARD",
+                                "price":0.0,
+                                "postPurchaseDiscounts":[
+                                    
+                                ],
+                                "mandatory":false,
+                                "mandatoryFromGroup":false,
+                                "showInCart":true,
+                                "chargeType":"MRC_CHARGE"
+                            }
+                        ],
+                        "accessories":[
+                            
+                        ],
+                        "currentSubscriberInfo":{
+                            "subscriberID":"64502149121",
+                            "ptn":"9139984224",
+                            "loanDetails":null
+                        },
+                        "portInIntent":null,
+                        "effective":"IMMEDIATELY",
+                        "byodDevice":null,
+                        "macDiscounts":null,
+                        "upgradeEligibilityStatus":null,
+                        "upgradeEligibilityDate":null,
+                        "portInNeeded":false
+                    }
+                ],
+                "quantity":1
+            },
+            {
+                "packageId":"ci88646007029",
+                "packageType":"CP",
+                "packageSource":"VML",
+                "packageSourceUrl":null,
+                "oldCarrierInfo":{
+                    "gbLevel":null,
+                    "oldCarrier":null,
+                    "oldCarrierPrice":0.0
+                },
+                "subpackages":[
+                    {
+                        "subPackageId":"ci88646007029",
+                        "subPackageType":"CP",
+                        "device":null,
+                        "plan":{
+                            "name":"Sounds like a plan",
+                            "planCommerceItemID":"ci88646007029",
+                            "planSOCSKU":"LPDSA0542",
+                            "catalogReferenceID":"120200181",
+                            "price":25.0,
+                            "tiIndicator": true,
+                            "effectiveDate": "03/13/2020",
+                            "postPurchaseDiscounts":[
+                                {
+                                    "amount": 0,
+                                    "classification": "PROMOTION",
+                                    "applyMethod": "INVOICE_CREDIT",
+                                    "source": "WEB",
+                                    "webExclusive": null,
+                                    "label": "HULU",
+                                    "recurringInfo": null,
+                                    "promotionId": "112600019",
+                                    "couponCode": null
+                                  },
+                                  {
+                                    "amount": 0,
+                                    "classification": "PROMOTION",
+                                    "applyMethod": "INVOICE_CREDIT",
+                                    "source": "WEB",
+                                    "webExclusive": null,
+                                    "label": "Tech Expert - Free personal content/contact transfer",
+                                    "recurringInfo": null,
+                                    "promotionId": "113700020",
+                                    "couponCode": null
+                                  }
+                                
+                            ],
+                            "planRequiredSocs":[
+                                {
+                                    "requiredSOCSKU":"LPDS542RC",
+                                    "requiredSOCDescription":"Unlimited Service Plan",
+                                    "socStatus":"NEW",
+                                    "socType":"MRC_SOC",
+                                    "price":23.0,
+                                    "basePrice":23.0,
+                                    "onPromotion":false,
+                                    "hasPromotionalOfferButNotEligible":false,
+                                    "requiredSOCMACList":null
+                                },
+                                {
+                                    "requiredSOCSKU":"SUBCHG25",
+                                    "requiredSOCDescription":null,
+                                    "socStatus":"SYSTEM_REMOVED",
+                                    "socType":"UPCHARGE_SOC",
+                                    "price":0.0,
+                                    "basePrice":0.0,
+                                    "onPromotion":false,
+                                    "hasPromotionalOfferButNotEligible":false,
+                                    "requiredSOCMACList":null
+                                },
+                                {
+                                    "requiredSOCSKU":"REQPROLHS",
+                                    "requiredSOCDescription":null,
+                                    "socStatus":"SYSTEM_REMOVED",
+                                    "socType":"PLAN_INCLUDED_SOC",
+                                    "price":0.0,
+                                    "basePrice":0.0,
+                                    "onPromotion":false,
+                                    "hasPromotionalOfferButNotEligible":false,
+                                    "requiredSOCMACList":null
+                                }
+                            ],
+                            "lineCorpDiscountApplied":false
+                        },
+                        "services":[
+                            {
+                                "name":"Unlimited Premium",
+                                "serviceCommerceItemID":"ci88646007030",
+                                "serviceSOCSKU":"PDSBYUP8",
+                                "catalogReferenceID":"125000073",
+                                "serviceStatus":"NEW",
+                                "price":20.0,
+                                "postPurchaseDiscounts":[
+                                    
+                                ],
+                                "mandatory":false,
+                                "mandatoryFromGroup":true,
+                                "showInCart":true,
+                                "chargeType":"MRC_CHARGE"
+                            },
+                            {
+                                "name":"Allow my device to place international calls while in the United States",
+                                "serviceCommerceItemID":"ci88646007031",
+                                "serviceSOCSKU":"INTLCALLS",
+                                "catalogReferenceID":"1000084",
+                                "serviceStatus":"CARRY_FORWARD",
+                                "price":0.0,
+                                "postPurchaseDiscounts":[
+                                    
+                                ],
+                                "mandatory":false,
+                                "mandatoryFromGroup":false,
+                                "showInCart":true,
+                                "chargeType":"MRC_CHARGE"
+                            }
+                        ],
+                        "accessories":[
+                            
+                        ],
+                        "currentSubscriberInfo":{
+                            "subscriberID":"64502149121",
+                            "ptn":"9139984224",
+                            "loanDetails":null
+                        },
+                        "portInIntent":null,
+                        "effective":"IMMEDIATELY",
+                        "byodDevice":null,
+                        "macDiscounts":null,
+                        "upgradeEligibilityStatus":null,
+                        "upgradeEligibilityDate":null,
+                        "portInNeeded":false
+                    }
+                ],
+                "quantity":1
+            }
+        ],
+        "accountLevelServices":null,
+        "creditRange":"IRRELEVANT_CREDIT",
+        "cartCharacteristics":null,
+        "byod":false
+    }
+]

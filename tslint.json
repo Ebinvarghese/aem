@@ -1,0 +1,59 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "@sprint/common-web-configurations/tslint/recommended.json",
+    "@sprint/common-web-configurations/tslint/recommended-overrides.json",
+    "@sprint/common-web-configurations/tslint/angular-recommended.json",
+    "@sprint/common-web-configurations/tslint/angular-strict.json"
+  ],
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**/*.ts",
+      "apps/**/*.mock.ts"
+    ]
+  },
+  "jsRules": {},
+  "rules": {
+    "align": false,
+    "no-any": false,
+    "ordered-imports": false,
+    "max-classes-per-file": false,
+    "object-literal-key-quotes": false,
+    "member-ordering": false,
+    "no-console": false,
+    "no-string-literal": false,
+    "interface-name": false,
+    "angular-whitespace": false,
+    "no-empty": false,
+    "variable-name": false,
+    "no-shadowed-variable": false,
+    "templates-no-negated-async": false,
+    "prefer-for-of": false,
+    "use-view-encapsulation": false,
+    "no-output-on-prefix": false,
+    "component-selector": {
+      "options": [
+        "element",
+        [
+          "sprint-pci"
+        ],
+        "kebab-case"
+      ]
+    },
+    "directive-selector": {
+      "options": [
+        "attribute",
+        [
+          "sprintPci"
+        ],
+        "camelCase"
+      ]
+    },
+    "pipe-naming": {
+      "options": [
+        "camelCase",
+        "sprintPci"
+      ]
+    }
+  }
+}

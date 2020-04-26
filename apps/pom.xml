@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <!-- ====================================================================== -->
+  <!-- P A R E N T P R O J E C T D E S C R I P T I O N -->
+  <!-- ====================================================================== -->
+  <parent>
+    <groupId>com.ebin.aem</groupId>
+    <artifactId>ebin-aem</artifactId>
+    <version>6.0.0.0-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <!-- ====================================================================== -->
+  <!-- P R O J E C T D E S C R I P T I O N -->
+  <!-- ====================================================================== -->
+
+  <artifactId>ebin-aem-apps</artifactId>
+  <packaging>content-package</packaging>
+  <name>ebin AEM Project Content Package</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <sonar.sources>${basedir}/src/main/content/jcr_root</sonar.sources>
+  </properties>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/content/jcr_root</directory>
+        <filtering>false</filtering>
+        <excludes>
+          <exclude>**/.vlt</exclude>
+          <exclude>**/.vltignore</exclude>
+          <exclude>**/.gitignore</exclude>
+          <exclude>**/*.iml</exclude>
+          <exclude>**/*.scss</exclude>
+          <exclude>**/*.ts</exclude>
+          <exclude>**/.classpath</exclude>
+          <exclude>**/.project</exclude>
+          <exclude>**/.settings</exclude>
+          <exclude>**/.DS_Store</exclude>
+          <exclude>**/target/**</exclude>
+          <exclude>**/pom.xml</exclude>
+          <exclude>**/apps/ebin-aem/clientlibs/*/src/**</exclude>
+          <exclude>**/*.md</exclude>
+        </excludes>
+      </resource>
+    </resources>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <configuration>
+          <includeEmptyDirs>true</includeEmptyDirs>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>com.day.jcr.vault</groupId>
+        <artifactId>content-package-maven-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <group>ebin-aem</group>
+          <filterSource>src/main/content/META-INF/vault/filter.xml</filterSource>
+          <embeddeds>
+            <embedded>
+              <groupId>com.ebin.aem</groupId>
+              <artifactId>ebin-aem-bundle</artifactId>
+              <target>/apps/ebin-aem/install</target>
+            </embedded>
+          </embeddeds>
+          <targetURL>${aem.protocol}://${aem.host}:${aem.port}/crx/packmgr/service.jsp</targetURL>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>pl.project13.maven</groupId>
+        <artifactId>git-commit-id-plugin</artifactId>
+        <version>2.2.4</version>
+        <configuration>
+          <dotGitDirectory>${project.parent.basedir}/.git</dotGitDirectory>
+          <injectAllReactorProjects>true</injectAllReactorProjects>
+          <commitIdGenerationMode>full</commitIdGenerationMode>
+          <failOnNoGitDirectory>true</failOnNoGitDirectory>
+          <failOnUnableToExtractRepoInfo>true</failOnUnableToExtractRepoInfo>
+        </configuration>
+        <executions>
+          <execution>
+            <id>get repository info</id>
+            <goals>
+              <goal>revision</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <version>1.6</version>
+        <configuration>
+          <workingDirectory>${project.parent.basedir}</workingDirectory>
+          <environmentVariables>
+            <NODE_ENV>${frontend.build.environment}</NODE_ENV>
+            <!-- Always install devDependencies -->
+            <NPM_CONFIG_PRODUCTION>false</NPM_CONFIG_PRODUCTION>
+            <RUN_ENV>${frontend.run.environment}</RUN_ENV>
+            <BUILD_INFO_PROJECT>${project.artifactId}</BUILD_INFO_PROJECT>
+            <BUILD_INFO_BRANCH>${git.branch}</BUILD_INFO_BRANCH>
+            <BUILD_INFO_HASH>${git.commit.id.full}</BUILD_INFO_HASH>
+            <BUILD_INFO_COMMIT_TIME>${git.commit.time}</BUILD_INFO_COMMIT_TIME>
+            <BUILD_INFO_BUILD_TIME>${git.build.time}</BUILD_INFO_BUILD_TIME>
+          </environmentVariables>
+        </configuration>
+        <executions>
+          <execution>
+            <id>install node and npm</id>
+            <goals>
+              <goal>install-node-and-npm</goal>
+            </goals>
+            <configuration>
+              <nodeVersion>v10.15.3</nodeVersion>
+              <npmVersion>6.4.1</npmVersion>
+            </configuration>
+          </execution>
+          <execution>
+            <id>npm install</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <configuration>
+              <arguments>ci</arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>webpack build</id>
+            <goals>
+              <goal>webpack</goal>
+            </goals>
+            <phase>generate-resources</phase>
+          </execution>
+          <execution>
+            <id>jest test</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>test</phase>
+            <configuration>
+              <arguments>test -- ${frontend.jest.arguments.ci} ${frontend.jest.arguments.cache} ${frontend.jest.arguments.coverage} ${frontend.jest.arguments.threads}</arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>typescript type-check</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>test</phase>
+            <configuration>
+              <arguments>run type-check</arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>typescript lint</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>test</phase>
+            <configuration>
+              <arguments>run tslint</arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>style lint</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>test</phase>
+            <configuration>
+              <arguments>run stylelint</arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>size limit</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>test</phase>
+            <configuration>
+              <arguments>run size</arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>node security check</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>test</phase>
+            <configuration>
+              <arguments>run security</arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>xml-maven-plugin</artifactId>
+        <version>1.0.2</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>validate</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <validationSets>
+            <validationSet>
+              <dir>src</dir>
+              <includes>**/*.xml</includes>
+            </validationSet>
+          </validationSets>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <profiles>
+    <profile>
+      <id>autoInstallPackage</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.day.jcr.vault</groupId>
+            <artifactId>content-package-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>install-content-package</id>
+                <phase>install</phase>
+                <goals>
+                  <goal>install</goal>
+                </goals>
+                <configuration>
+                  <targetURL>${aem.protocol}://${aem.host}:${aem.port}/crx/packmgr/service.jsp</targetURL>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>autoInstallPackagePublish</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.day.jcr.vault</groupId>
+            <artifactId>content-package-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>install-content-package-publish</id>
+                <phase>install</phase>
+                <goals>
+                  <goal>install</goal>
+                </goals>
+                <configuration>
+                  <targetURL>${aem.publish.protocol}://${aem.publish.host}:${aem.publish.port}/crx/packmgr/service.jsp</targetURL>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>frontendTestCoverage</id>
+      <activation>
+        <property>
+          <name>frontend.test.coverage</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <properties>
+        <frontend.jest.arguments.coverage>--coverage</frontend.jest.arguments.coverage>
+      </properties>
+    </profile>
+  </profiles>
+</project>

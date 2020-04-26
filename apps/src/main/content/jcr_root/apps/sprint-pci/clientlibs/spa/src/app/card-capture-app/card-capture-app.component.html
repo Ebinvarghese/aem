@@ -1,0 +1,138 @@
+<div class="notification-bar notification-bar--red mb-5" role="dialog" aria-describedby="global-error"
+  data-global-error-container *ngIf="errorText !== '' && showError$ | async">
+  <div class="container-xl">
+    <div class="notification-bar__wrapper">
+      <div class="notification-bar__message" data-global-error>{{errorText}}</div>
+      <button type="button" aria-label="Close Notification" class="notification-bar__close" (click)="hideMessage('error')"
+        data-global-error-close-btn></button>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row center-sm">
+    <p class="font-size-22 col-xs-12 col-md-10 col-lg-7 py-40" *ngIf="isEGApp && (showSuccess$ | async)"
+       [innerHTML]="'successMessageEG' | sprintAuthoredContent: {data: { orderId: externalorderId } } | sprintSafeHtml">
+    </p>
+    <p class="font-size-22 col-xs-12 col-md-10 col-lg-7 py-40" *ngIf="isB2BApp && (showSuccess$ | async)"
+       [innerHTML]="'successMessage' | sprintAuthoredContent: {data: { orderId: externalorderId } } | sprintSafeHtml">
+    </p>
+    <div data-card-capture-form [ngClass]="(isB2BApp || isEGApp) && (showSuccess$ | async) ? 'hide' : 'col-xs-12 col-md-9 col-lg-6 py-20'">
+      <h4 class="font-medium align-center ma-0" *ngIf="showPageTitle">{{ "cardCapturePageTitle" | sprintAuthoredContent }}</h4>
+      <div *ngIf="showCardAllFieldsForm">
+        <p class="mb-40 font-medium font-size-22" *ngIf="isSalesForceApp && (orderAmount$ | async)">
+          {{ "orderAmountText" | sprintAuthoredContent }}
+          {{ (orderAmount$ | async) | currency: 'USD':'symbol':'.2-2' }}
+        </p>
+        <form [formGroup]="cardCaptureForm">
+          <div class="col-xs-12 mt-20 pa-0">
+            <div class="soar-input soar-input-cc">
+              <label for="nameOnCard">{{ "nameOnCardlabel" | sprintAuthoredContent }}</label>
+              <div class="soar-input__container">
+                <input
+                  id="nameOnCard"
+                  type="text"
+                  name="nameOnCard"
+                  formControlName="nameOnCard"
+                  maxlength="60"
+                  updateValueAndValidityOnBlur
+                  class="spa ctHidden tlPrivate"
+                  [attr.placeholder]="'nameOnCardPlaceholder' | sprintAuthoredContent"
+                  [attr.aria-describedby]="nameOnCardError?.errorCode ? 'error-name' : ''"
+                  [attr.aria-invalid]="nameOnCardError?.errorCode ? 'true' : 'false'" />
+                <sprint-form-field-error-group>
+                  <sprint-form-field-error
+                    #nameOnCardError
+                    id="error-nameOnCard"
+                    type="text"
+                    [control]="cardCaptureForm?.controls?.nameOnCard"
+                    [showForTheseErrorCodes]="['required']"
+                    [ngSwitch]="nameOnCardError?.errorCode">
+                    <ng-template ngSwitchCase="required">{{ "nameOnCardRequiredError" | sprintAuthoredContent }}</ng-template>
+                  </sprint-form-field-error>
+                </sprint-form-field-error-group>
+              </div>
+            </div>
+          </div>
+          <sprint-credit-card-form [parentForm]="cardCaptureForm" [includeZipCode]="false">
+          </sprint-credit-card-form>
+          <div *ngIf="isSalesForceApp">
+            <p class="mb-0">{{ "billingAddressLabel" | sprintAuthoredContent }}</p>
+            <sprint-address-form class="pa-0" [parentForm]="cardCaptureForm">
+            </sprint-address-form>
+          </div>
+          <re-captcha *ngIf="isB2BApp || isEGApp" formControlName="reCaptcha"  name="reCaptcha" required siteKey="{{captchaKeyValue}}"></re-captcha>
+          <div class="col-xs-12 col-sm-variable last-sm pa-0 my-20 mb-sm-0">
+            <button *ngIf="showCancelButton" class="button button--full-on-mobile button--minwidth-md mr-20 mb-20 mb-sm-0"
+                    (click)="redirectToOriginalApp()">{{ "cancelTitle" | sprintAuthoredContent }}
+            </button>
+            <button class="button button--full-on-mobile button--minwidth-md"
+                    (click)="getToken()"
+                    [disabled]="isSubmitCardFormDisabled"
+                    [ngClass]="{'button--pending':processingTokenization}">{{ "submitTitle" | sprintAuthoredContent }}
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="row center-sm my-20" *ngIf="!showCardAllFieldsForm">
+        <form [formGroup]="cardNumberCaptureForm" class="col-xs-12">
+          <div class="col-xs-12 pa-0">
+            <div class="soar-input soar-input-cc">
+              <label for="creditCardNumber">{{"cardNumberTitle" | sprintAuthoredContent}}</label>
+              <div class="soar-input__container">
+                <input
+                  id="creditCardNumber"
+                  type="tel"
+                  name="creditCardNumber"
+                  formControlName="cardNumber"
+                  updateValueAndValidityOnBlur
+                  sprintCreditCardNumberMask="mask"
+                  (cardTypeChanged)="onCardTypeChanged($event)"
+                  class="spa ctHidden tlPrivate"
+                  [attr.placeholder]="'cardNumberPlaceholder' | sprintAuthoredContent"
+                  [attr.aria-describedby]="creditCardNumberError?.errorCode ? 'error-cardNumber' : null"
+                  [attr.aria-invalid]="creditCardNumberError?.errorCode ? 'true' : 'false'"
+                  autocomplete="cc-number"
+                  (keyup)="verifyTokenStatus()"
+                  required
+                />
+                <sprint-form-field-error-group>
+                  <sprint-form-field-error
+                    id="error-cardNumber"
+                    #creditCardNumberError
+                    [control]="cardNumberCaptureForm?.controls?.cardNumber"
+                    [ngSwitch]="creditCardNumberError?.errorCode">
+                    <ng-template ngSwitchCase="INVALID_PAYMENT_CARD_DATA">{{"invalidCardError" | sprintAuthoredContent}}</ng-template>
+                    <ng-template ngSwitchCase="required">{{"mysprint:make-payment-details:card:cardNumberError" | translate}}</ng-template>
+                  </sprint-form-field-error>
+                </sprint-form-field-error-group>
+                <div class="soar-input-cc__visual" aria-label="Secure Connection">
+                  <svg viewBox="0 0 1 1" role="image">
+                    <use [attr.xlink:href]="'/etc.clientlibs/sprint-common/clientlibs/sprint-common/global/resources/assets/svgs/iconography.svg#' +(cardIconClass$ | async)"></use>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-variable last-sm mb-20 mb-sm-0">
+              <button class="button button--full-on-mobile button--minwidth-md" (click)="getToken()" [disabled]="isSubmitCardNumberDisabled">{{ "submitTitle" | sprintAuthoredContent }}
+              </button>
+            </div>
+            <div *ngIf="token && cardNumberCaptureForm?.controls?.cardNumber?.valid">
+              <div class="soar-input mt-40">
+                <label id="tokenId">{{ "tokenTitle" | sprintAuthoredContent }}</label>
+                <input id="tokenField" [innerHTML]="" disabled formControlName="token" />
+              </div>
+              <div class="col-xs-12 col-sm-variable last-sm mb-20 mb-sm-0">
+                <button class="button button--full-on-mobile button--minwidth-md" (click)="copyToken()">
+                  {{ "copyTitle" | sprintAuthoredContent }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div data-confirmation-message  *ngIf="isSalesForceApp" class="hide align-center font-size-22 mt-40">
+      <p>{{ "confirmationMessage" | sprintAuthoredContent }}</p>
+    </div>
+  </div>
+</div>

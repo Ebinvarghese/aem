@@ -1,0 +1,13 @@
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>${project.name}</comment>
+<entry key="createdBy">${env.USER}</entry>
+<entry key="name">${project.artifactId}</entry>
+<entry key="created">${build.time}</entry>
+<entry key="groupId">${project.groupId}</entry>
+<entry key="version">${project.version}</entry>
+<entry key="group">${client.name}</entry>
+<entry key="description">${project.description}</entry>
+<entry key="artifactId">${project.artifactId}</entry>
+<entry key="path">/etc/packages/${client.name}/${project.artifactId}-${project.version}.${project.packaging}</entry>
+</properties>

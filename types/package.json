@@ -1,0 +1,7 @@
+{
+  "name": "@sprint-types/sprint-pci",
+  "version": "18.0.0",
+  "publishConfig": {
+    "registry": "https://nexus01-wcm.sprint.com/repository/digital-npm-internal/"
+  }
+}

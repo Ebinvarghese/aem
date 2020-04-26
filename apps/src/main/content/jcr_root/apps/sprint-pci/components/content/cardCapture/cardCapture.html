@@ -1,0 +1,23 @@
+<div class="container-xl" data-sly-test="${wcmmode.edit}">
+  <div class="aem-ui-container">PCI Card Capture App renders here.</div>
+</div>
+<div data-sly-include="headerTemplates/vwiHeader.html" data-sly-test="${properties.enableVWIPageFlag}"></div>
+<div class="row sprint-header-bottom new-header-bottom border--yellow border--thick" data-sly-test="${!properties.enableVWIPageFlag}">
+  <div class="col-lg-4 col-md-3 col-xs-5">
+    <div class="sprint-pci-smsp__logo">
+      <div class="iconography">
+        <svg viewBox="0 0 1 1" class="iconography-svg" color="black">
+          <use xlink:href="/etc.clientlibs/sprint-common/clientlibs/sprint-common/global/resources/assets/svgs/iconography.svg#sprint-full-logo"></use>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <h4 data-card-capture-header class="col-lg-5 col-xs-7 pt-20 font-medium"></h4>
+</div>
+
+<sprint-pci-card-capture></sprint-pci-card-capture>
+<div data-sly-use.js="${'/apps/sprint-common/components/utils/propsToJSON.js'}" data-authoredvars-component="card-capture-app-component" data-authoredvars-data="${js.allPropArray}"></div>
+<div data-sly-use.captcha="cardCaptureCaptcha.js">
+  <div data-authoredvars-component="card-capture-app-component-captcha" data-authoredvars-data='{"captchaKeyValue": "${captcha.captchakey}"}'></div>
+</div>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:vlt="http://www.day.com/jcr/vault/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:description="sprint-cart Pacakge"
+    jcr:primaryType="vlt:PackageDefinition"
+    sling:resourceType="cq/packaging/components/pack/definition"
+    buildCount="1"
+    cqVersion="6.1"
+    group="sprint-cart-package"
+    name="sprint-cart-aem"
+    path="/etc/packages/sprint-cart-package/sprint-cart-aem-4.5.0"
+    version="4.5.0">
+<thumbnail.png/>
+<filter jcr:primaryType="nt:unstructured">
+<f0 jcr:primaryType="nt:unstructured" mode="replace" root="/apps/sprint-cart" rules="[]"/>
+<f1 jcr:primaryType="nt:unstructured" mode="replace" root="/etc/clientlibs/sprint-cart" rules="[]"/>
+<f2 jcr:primaryType="nt:unstructured" mode="replace" root="/etc/design/sprint-cart" rules="[]"/>
+<f3 jcr:primaryType="nt:unstructured" mode="replace" root="/apps/sprint-cart/clientlibs" rules="[]"/>
+</filter>
+</jcr:root>

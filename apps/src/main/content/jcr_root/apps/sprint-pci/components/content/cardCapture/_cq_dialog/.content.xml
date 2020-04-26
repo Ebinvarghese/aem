@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="PCI Card Capture App"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/foundation/container">
+        <layout
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/foundation/layouts/tabs"
+            type="stacked"/>
+        <items jcr:primaryType="nt:unstructured">
+            <tab1
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Card Capture Page Info"
+                sling:resourceType="granite/ui/components/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <columns
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                          <headerInformation
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/foundation/form/multifield"
+                            class="full-width"
+                            fieldDescription="Click 'Add field' to add a social icon"
+                            fieldLabel="Header Information">
+                            <field
+                              jcr:primaryType="nt:unstructured"
+                              sling:resourceType="granite/ui/components/foundation/form/fieldset"
+                              acs-commons-nested=""
+                              aem-platform-nested="JSON_STORE"
+                              name="./headerInformation">
+                              <layout
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+                                method="absolute"/>
+                              <items jcr:primaryType="nt:unstructured">
+                                <column
+                                  jcr:primaryType="nt:unstructured"
+                                  sling:resourceType="granite/ui/components/foundation/container">
+                                  <items jcr:primaryType="nt:unstructured">
+                                    <applicationId
+                                      jcr:primaryType="nt:unstructured"
+                                      sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                      fieldDescription="Enter Menu Name"
+                                      fieldLabel="Application Id"
+                                      name="./applicationId"/>
+                                    <applicationHeaderName
+                                      jcr:primaryType="nt:unstructured"
+                                      sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                      fieldDescription="Enter Menu Name"
+                                      fieldLabel="Application Header Name"
+                                      name="./applicationHeaderName"/>
+                                  </items>
+
+                                </column>
+                              </items>
+                            </field>
+                          </headerInformation>
+                          <cardCaptureDefaultHeader
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/foundation/form/textfield"
+                            fieldLabel="Card Capture Page Default Header"
+                            name="./cardCaptureDefaultHeader"/>
+                          <cardCapturePageTitle
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/foundation/form/textfield"
+                            fieldLabel="Card Capture Page Title"
+                            name="./cardCapturePageTitle"/>
+                          <nameOnCardlabel
+                              jcr:primaryType="nt:unstructured"
+                              sling:resourceType="granite/ui/components/foundation/form/textfield"
+                              fieldLabel="Name On Card"
+                              fieldDescription="Name On Card Label"
+                              name="./nameOnCardlabel"/>
+                          <nameOnCardPlaceholder
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/foundation/form/textfield"
+                            fieldLabel="Name On Card Place Holder"
+                            fieldDescription="Name On Card Place Holder"
+                            name="./nameOnCardPlaceholder"/>
+                          <nameOnCardRequiredError
+                              jcr:primaryType="nt:unstructured"
+                              sling:resourceType="granite/ui/components/foundation/form/textfield"
+                              fieldLabel="Name required error text"
+                              name="./nameOnCardRequiredError"/>
+                          <orderAmountText
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/foundation/form/textfield"
+                            fieldLabel="Order amount text"
+                            name="./orderAmountText"/>
+                          <billingAddressLabel
+                              jcr:primaryType="nt:unstructured"
+                              sling:resourceType="granite/ui/components/foundation/form/textfield"
+                              fieldLabel="Billing address label"
+                              name="./billingAddressLabel"/>
+                          <confirmationMessage
+                              jcr:primaryType="nt:unstructured"
+                              sling:resourceType="granite/ui/components/foundation/form/textfield"
+                              fieldLabel="Salesforce confirmation message"
+                              name="./confirmationMessage"/>
+                          <submitTitle
+                              jcr:primaryType="nt:unstructured"
+                              sling:resourceType="granite/ui/components/foundation/form/textfield"
+                              fieldLabel="Submit title"
+                              fieldDescription="submit"
+                              name="./submitTitle"/>
+                          <cancelTitle
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/foundation/form/textfield"
+                            fieldLabel="Cancel title"
+                            fieldDescription="Cancel CTA"
+                            name="./cancelTitle"/>
+                          <technicalError
+                              jcr:primaryType="nt:unstructured"
+                              sling:resourceType="granite/ui/components/foundation/form/textfield"
+                              fieldLabel="Technical Error"
+                              fieldDescription="technicalError"
+                              name="./technicalError"/>
+                          <verificationFailed
+                              jcr:primaryType="nt:unstructured"
+                              sling:resourceType="granite/ui/components/foundation/form/textfield"
+                              fieldLabel="Verification Failed"
+                              fieldDescription="verificationFailed"
+                              name="./verificationFailed"/>
+                          <invalidOTP
+                              jcr:primaryType="nt:unstructured"
+                              sling:resourceType="granite/ui/components/foundation/form/textfield"
+                              fieldLabel="Invalid OTP"
+                              fieldDescription="invalidOTP"
+                              name="./invalidOTP"/>
+                          <expiredOTP
+                              jcr:primaryType="nt:unstructured"
+                              sling:resourceType="granite/ui/components/foundation/form/textfield"
+                              fieldLabel="Expired OTP"
+                              fieldDescription="expiredOTP"
+                              name="./expiredOTP"/>
+                          <noRecordFound
+                              jcr:primaryType="nt:unstructured"
+                              sling:resourceType="granite/ui/components/foundation/form/textfield"
+                              fieldLabel="No Record Found"
+                              fieldDescription="noRecordFound"
+                              name="./noRecordFound"/>
+                          <unavailableGUID
+                              jcr:primaryType="nt:unstructured"
+                              sling:resourceType="granite/ui/components/foundation/form/textfield"
+                              fieldLabel="GUID not available"
+                              fieldDescription="unavailableGUID"
+                              name="./unavailableGUID"/>
+                          <successMessage
+                              jcr:primaryType="nt:unstructured"
+                              sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                              fieldLabel="Success Message for B2B app"
+                              fieldDescription="successMessage"
+                              name="./successMessage"
+                              useFixedInlineToolbar="{Boolean}true"/>
+                          <successMessageEG
+                              jcr:primaryType="nt:unstructured"
+                              sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                              fieldLabel="Success Message for E and G application"
+                              fieldDescription="successMessageEG"
+                              name="./successMessageEG"
+                              useFixedInlineToolbar="{Boolean}true"/>
+                          <invalidCardError
+                              jcr:primaryType="nt:unstructured"
+                              sling:resourceType="granite/ui/components/foundation/form/textfield"
+                              fieldLabel="Invalid Card Error"
+                              fieldDescription="invalidCardError"
+                              name="./invalidCardError"/>
+                          <pageTitleAppIdList
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/foundation/form/textfield"
+                            fieldLabel="Enter Application Ids that need page title"
+                            fieldDescription="Enter Application Ids with comma separated that need page title. Ex: SMSP,D2S"
+                            name="./pageTitleAppIdList"/>
+                          <CLCSAppIdList
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/foundation/form/textfield"
+                            fieldLabel="Enter Application Ids of CLCS"
+                            fieldDescription="Enter Application Ids with comma separated. Ex: O4H,D2S"
+                            name="./CLCSAppIdList"/>
+                        </items>
+                    </columns>
+                </items>
+            </tab1>
+            <tab2
+            jcr:primaryType="nt:unstructured"
+            jcr:title="Card Capture Page - VWI Page"
+            sling:resourceType="granite/ui/components/foundation/container">
+            <items jcr:primaryType="nt:unstructured">
+              <columns
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                  <enableVWIPageFlag
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                    text="Enable VWI Page"
+                    fieldLabel="Enable VWI Page"
+                    value="{Boolean}true"
+                    defaultChecked="{Boolean}false"
+                    uncheckedValue="false"
+                    name="./enableVWIPageFlag"/>
+                  <vwiTitle
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/foundation/form/textfield"
+                    fieldLabel="Title For VWI Page"
+                    name="./vwiTitle"/>
+                  <cardNumberTitle
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/foundation/form/textfield"
+                    fieldLabel="Card Number"
+                    fieldDescription="Card Number"
+                    name="./cardNumberTitle"/>
+                  <cardNumberPlaceholder
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/foundation/form/textfield"
+                    fieldLabel="Card Number Place Holder"
+                    fieldDescription="Card Number Place Holder"
+                    name="./cardNumberPlaceholder"/>
+                  <copyTitle
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/foundation/form/textfield"
+                    fieldLabel="Copy title"
+                    fieldDescription="copy"
+                    name="./copyTitle"/>
+                  <tokenTitle
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/foundation/form/textfield"
+                    fieldLabel="Token title"
+                    fieldDescription="token"
+                    name="./tokenTitle"/>
+                </items>
+              </columns>
+            </items>
+          </tab2>
+        </items>
+    </content>
+</jcr:root>

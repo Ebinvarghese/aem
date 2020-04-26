@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<ruleset name="Custom Ruleset"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+  <description>
+    The Basic ruleset contains a collection of good practices which should be followed.
+  </description>
+
+  <!-- Individual Rules -->
+  <rule ref="category/java/design.xml/AvoidDeeplyNestedIfStmts">
+    <properties>
+      <property name="problemDepth" value="4"/>
+    </properties>
+  </rule>
+  <rule ref="category/java/design.xml/CollapsibleIfStatements"/>
+  <rule ref="category/java/design.xml/SimplifyBooleanExpressions"/>
+  <rule ref="category/java/design.xml/SimplifyBooleanReturns"/>
+  <rule ref="category/java/design.xml/SimplifyConditional"/>
+
+  <!-- Rules to Add -->
+  <!--
+  <rule ref="category/java/design.xml/CyclomaticComplexity" />
+  <rule ref="category/java/design.xml/ExcessiveClassLength" />
+  <rule ref="category/java/design.xml/ExcessiveMethodLength" />
+  -->
+
+  <!-- Rule Category Sets -->
+  <rule ref="category/java/bestpractices.xml">
+    <exclude name="GuardLogStatement"/>
+  </rule>
+  <rule ref="category/java/errorprone.xml">
+    <exclude name="BeanMembersShouldSerialize"/>
+    <exclude name="DataflowAnomalyAnalysis"/>
+    <exclude name="SimpleDateFormatNeedsLocale"/>
+  </rule>
+
+</ruleset>

@@ -1,0 +1,20 @@
+<workspaceFilter version="1.0">
+  <filter root="/apps/sprint-pci/components"/>
+  <filter root="/apps/sprint-pci/install"/>
+  <filter root="/apps/sprint-pci/templates"/>
+
+  <filter root="/etc/clientlibs/sprint-pci"/>
+  <filter root="/apps/sprint-pci/clientlibs"/>
+  <filter root="/etc/clientlibs/sprint-pci" mode="replace"/>
+  <filter root="/etc/designs/sprint-pci">
+    <include pattern="/etc/designs/sprint-pci/jcr:content"/>
+		<include pattern="/etc/designs/sprint-common/jcr:content/clientlibs"/>
+		<include pattern="/etc/designs/sprint-common/jcr:content/clientlibs/.*"/>
+  </filter>
+
+  <!-- These are added to force delete generated files. -->
+  <filter root="/var/clientlibs/etc/clientlibs/sprint-pci"/>
+    <filter root="/var/clientlibs/apps/sprint-pci/clientlibs"/>
+  <filter root="/var/clientlibs/apps/sprint-pci"/>
+  <filter root="/var/classes/org/apache/jsp/apps/sprint-pci"/>
+</workspaceFilter>

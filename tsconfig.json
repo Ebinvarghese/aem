@@ -1,0 +1,36 @@
+{
+  "extends": "./node_modules/@sprint/common-web-configurations/typescript/common-tsconfig.json",
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "noUnusedParameters": false,
+    "noUnusedLocals": false,
+    "strictNullChecks": false,
+    "baseUrl": "",
+    "skipLibCheck": true,
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/@sprint-types"
+    ],
+    "paths": {
+      "test-libs/*": [
+        "./apps/test-libs/*"
+      ],
+      "src/*": [
+        "./apps/src/main/content/jcr_root/apps/sprint-pci/clientlibs/spa/src/*"
+      ]
+    }
+  },
+  "include": [
+    "./apps/src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "node",
+    "apps/target",
+    "bundle",
+    "clientlibs/**/js",
+    "apps/test-libs"
+  ]
+}
